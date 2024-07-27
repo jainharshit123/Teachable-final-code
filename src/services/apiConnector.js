@@ -15,16 +15,23 @@
 
 import axios from "axios";
 
-// Create an Axios instance
 export const axiosInstance = axios.create({});
 
-// Function to make API calls
-export const apiConnector = (method, url, bodyData = null, headers = {}, params = {}) => {
-  return axiosInstance({
-    method, // Directly pass the method string
-    url,
-    data: bodyData, // Pass bodyData directly
-    headers, // Pass headers directly, defaults to an empty object
-    params, // Pass params directly, defaults to an empty object
-  });
+export const apiConnector =async (method, url, bodyData, headers, params) => {
+  try {
+    console.log('Making request:', { method, url, bodyData, headers, params });
+    const response = await axiosInstance({
+      method, // Directly pass the method string
+      url,
+      data: bodyData, // Pass bodyData directly
+      headers, // Pass headers directly, defaults to an empty object
+      params, // Pass params directly, defaults to an empty object
+    });
+    console.log('Response:', response);
+    return response;
+  } catch (error) {
+    console.error('Error in API call:', error);
+    throw error;
+  }
 };
+
