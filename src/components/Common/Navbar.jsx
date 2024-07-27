@@ -40,7 +40,7 @@ function Navbar() {
   return (
    
     <div
-      className={`flex h-14 sticky top-0 bg-blue-500 text-white p-4 z-50 items-center justify-center border-b-[1px] border-b-richblack-700 ${
+      className={`flex h-14 fixed left-0 top-0 w-[100%] bg-blue-500 text-white p-4 z-50 items-center justify-center ${
         location.pathname !== "/" ? "bg-richblack-800" : ""
       } transition-all duration-200`}
     >
